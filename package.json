@@ -1,0 +1,16 @@
+{
+  "name": "notify-mcp",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "bun run packages/server/src/http.ts",
+    "server": "bun run packages/server/src/http.ts",
+    "desktop": "bun run packages/desktop-client/src/index.ts"
+  },
+  "devDependencies": {
+    "bun-types": "^1.1.24"
+  }
+}

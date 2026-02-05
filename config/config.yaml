@@ -1,0 +1,35 @@
+# 認証（初回起動時にトークン自動生成）
+auth:
+  enabled: false
+  token: ""
+
+# 通知チャネル
+channels:
+  - id: "ch_ntfy_default"
+    type: ntfy
+    enabled: true
+    topic: my-dev-notifications
+    server: https://ntfy.sh
+    priority_map:
+      info: 3
+      action_required: 5
+    format: "{{urgency_emoji}} {{message}}"
+
+  - id: "ch_slack_default"
+    type: http-webhook
+    enabled: true
+    preset: slack
+    url: https://hooks.slack.com/services/xxx/yyy/zzz
+    format: "{{urgency_emoji}} *notify-mcp* | {{message}}"
+
+  - id: "ch_desktop_default"
+    type: desktop
+    enabled: true
+    endpoint: ws://localhost:9876
+    format: "{{urgency_emoji}} {{message}}"
+
+broadcast: true
+
+logging:
+  enabled: true
+  db_path: ./data/notify-logs.sqlite

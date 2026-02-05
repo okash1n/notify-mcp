@@ -1,0 +1,10 @@
+{
+  "name": "@notify-mcp/core",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "dependencies": {
+    "yaml": "^2.4.5",
+    "ws": "^8.17.0"
+  }
+}

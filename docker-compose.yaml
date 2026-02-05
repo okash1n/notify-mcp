@@ -1,0 +1,11 @@
+services:
+  notify-mcp:
+    build: .
+    ports:
+      - "19800:19800"
+    volumes:
+      - ./config:/app/config
+      - ./data:/app/data
+    environment:
+      - CONFIG_PATH=/app/config/config.yaml
+      - PORT=19800
