@@ -26,7 +26,12 @@
         </label>
         <label>
           <span>Token</span>
-          <input id="tokenInput" type="password" placeholder="nmcp_xxx" />
+          <div class="row token-row">
+            <input id="tokenInput" type="password" placeholder="nmcp_xxx" />
+            <button id="toggleToken" class="ghost" type="button">Reveal</button>
+            <button id="copyToken" class="ghost" type="button">Copy</button>
+          </div>
+          <span id="tokenStatus" class="inline"></span>
         </label>
         <div class="row">
           <button id="saveToken" class="primary">Use token</button>

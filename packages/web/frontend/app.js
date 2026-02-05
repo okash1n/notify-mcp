@@ -3,6 +3,9 @@ const authEnabled = document.getElementById("authEnabled");
 const saveTokenButton = document.getElementById("saveToken");
 const refreshTokenButton = document.getElementById("refreshToken");
 const regenerateTokenButton = document.getElementById("regenerateToken");
+const toggleTokenButton = document.getElementById("toggleToken");
+const copyTokenButton = document.getElementById("copyToken");
+const tokenStatus = document.getElementById("tokenStatus");
 const channelsContainer = document.getElementById("channels");
 const newChannelContainer = document.getElementById("newChannel");
 const addChannelButton = document.getElementById("addChannel");
@@ -24,8 +27,62 @@ const state = {
   presets: []
 };
 
+let tokenStatusTimeout = null;
+
+function setTokenStatus(message) {
+  if (!tokenStatus) return;
+  tokenStatus.textContent = message;
+  if (tokenStatusTimeout) {
+    clearTimeout(tokenStatusTimeout);
+  }
+  if (message) {
+    tokenStatusTimeout = setTimeout(() => {
+      tokenStatus.textContent = "";
+    }, 2000);
+  }
+}
+
 if (state.token) {
   tokenInput.value = state.token;
+}
+
+if (toggleTokenButton) {
+  toggleTokenButton.addEventListener("click", () => {
+    const isHidden = tokenInput.type === "password";
+    tokenInput.type = isHidden ? "text" : "password";
+    toggleTokenButton.textContent = isHidden ? "Hide" : "Reveal";
+  });
+}
+
+if (copyTokenButton) {
+  copyTokenButton.addEventListener("click", async () => {
+    const token = tokenInput.value.trim();
+    if (!token) {
+      setTokenStatus("Token is empty.");
+      return;
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(token);
+        setTokenStatus("Copied.");
+        return;
+      }
+    } catch {
+      // fallback below
+    }
+
+    try {
+      tokenInput.focus();
+      tokenInput.select();
+      const success = document.execCommand("copy");
+      tokenInput.setSelectionRange(0, 0);
+      tokenInput.blur();
+      setTokenStatus(success ? "Copied." : "Copy failed.");
+    } catch {
+      setTokenStatus("Copy failed.");
+    }
+  });
 }
 
 saveTokenButton.addEventListener("click", () => {

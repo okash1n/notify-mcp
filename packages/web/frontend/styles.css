@@ -155,6 +155,15 @@ button.ghost {
   font-size: 0.85rem;
 }
 
+.token-row input {
+  flex: 1;
+  min-width: 220px;
+}
+
+.token-row button {
+  padding: 10px 12px;
+}
+
 .span-2 {
   grid-column: span 2;
 }
