@@ -1,6 +1,17 @@
 _private
+node_modules/
+bun.lock
+
+# local data
+data/
 
 # IDE
 .vscode/
 .idea/
 *.code-workspace
+
+# OS
+.DS_Store
+
+# local overrides
+*.local
