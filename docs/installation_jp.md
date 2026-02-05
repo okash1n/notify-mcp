@@ -17,6 +17,7 @@ docker compose up -d
 
 ### 設定
 - `config/config.yaml` を編集
+- Web UIからチャネル追加や設定変更も可能
 - 変更後はコンテナ再起動
 
 ### docker run 例

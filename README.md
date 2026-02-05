@@ -19,6 +19,7 @@ docker compose up -d
 ```
 
 Edit `config/config.yaml` to add or adjust channels.
+Web UI can also create and edit channels and core settings.
 
 ## GHCR Image
 

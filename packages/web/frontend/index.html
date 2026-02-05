@@ -19,7 +19,11 @@
       </div>
       <div class="card auth">
         <h2>Auth</h2>
-        <p class="hint">認証が有効な場合はトークンを設定してください。</p>
+        <p class="hint">認証を有効にするとAPIがトークン必須になります。</p>
+        <label>
+          <span>Auth Enabled</span>
+          <input id="authEnabled" type="checkbox" />
+        </label>
         <label>
           <span>Token</span>
           <input id="tokenInput" type="password" placeholder="nmcp_xxx" />
@@ -27,11 +31,29 @@
         <div class="row">
           <button id="saveToken" class="primary">Use token</button>
           <button id="refreshToken" class="ghost">Reload</button>
+          <button id="regenerateToken" class="ghost">Regenerate</button>
         </div>
       </div>
     </header>
 
     <main class="grid">
+      <section class="card">
+        <h2>Settings</h2>
+        <label>
+          <span>Broadcast</span>
+          <input id="broadcastToggle" type="checkbox" />
+        </label>
+        <label>
+          <span>Logging Enabled</span>
+          <input id="loggingToggle" type="checkbox" />
+        </label>
+        <label>
+          <span>Logging DB Path</span>
+          <input id="loggingPath" type="text" placeholder="./data/notify-logs.sqlite" />
+        </label>
+        <button id="saveSettings" class="primary">Save Settings</button>
+      </section>
+
       <section class="card">
         <h2>Test Notification</h2>
         <label>
@@ -47,6 +69,17 @@
         </label>
         <button id="sendTest" class="primary">Send</button>
         <pre id="testResult" class="log"></pre>
+      </section>
+
+      <section class="card span-2">
+        <div class="row space">
+          <h2>Add Channel</h2>
+        </div>
+        <div id="newChannel" class="channel-item"></div>
+        <div class="row">
+          <button id="addChannel" class="primary">Add Channel</button>
+          <span id="addChannelStatus" class="hint"></span>
+        </div>
       </section>
 
       <section class="card span-2">

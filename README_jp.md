@@ -19,6 +19,7 @@ docker compose up -d
 ```
 
 `config/config.yaml` を編集してチャネルを追加・調整できます。
+Web UIからチャネル追加や設定変更も可能です。
 
 ## GHCR イメージ
 

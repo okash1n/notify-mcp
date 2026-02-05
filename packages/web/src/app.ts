@@ -34,6 +34,32 @@ export function createWebApp(options?: { configPath?: string }) {
     return next();
   });
 
+  app.get("/api/config", async (c) => {
+    const config = await loadConfig(configPath);
+    return c.json({ broadcast: config.broadcast, logging: config.logging });
+  });
+
+  app.put("/api/config", async (c) => {
+    const config = await loadConfig(configPath);
+    const body = await c.req.json();
+
+    if (typeof body.broadcast === "boolean") {
+      config.broadcast = body.broadcast;
+    }
+
+    if (body.logging && typeof body.logging === "object") {
+      if (typeof body.logging.enabled === "boolean") {
+        config.logging.enabled = body.logging.enabled;
+      }
+      if (typeof body.logging.db_path === "string") {
+        config.logging.db_path = body.logging.db_path;
+      }
+    }
+
+    await saveConfig(config, configPath);
+    return c.json({ broadcast: config.broadcast, logging: config.logging });
+  });
+
   app.get("/api/channels", async (c) => {
     const config = await loadConfig(configPath);
     return c.json({ channels: config.channels });
@@ -87,11 +113,15 @@ export function createWebApp(options?: { configPath?: string }) {
     const urgency = (body.urgency ?? "info") as Urgency;
     const channelIds = Array.isArray(body.channel_ids) ? body.channel_ids : undefined;
 
-    const results = await sendNotification(config, {
-      message,
-      urgency,
-      timestamp: new Date().toISOString()
-    }, { channelIds });
+    const results = await sendNotification(
+      config,
+      {
+        message,
+        urgency,
+        timestamp: new Date().toISOString()
+      },
+      { channelIds }
+    );
 
     return c.json({ results });
   });

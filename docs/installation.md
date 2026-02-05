@@ -17,6 +17,7 @@ docker compose up -d
 
 ### Config
 - Edit `config/config.yaml`
+- You can also create/edit channels and core settings in the Web UI
 - Restart the container after changes
 
 ### docker run example
