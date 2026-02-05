@@ -1,1 +1,6 @@
 _private
+
+# IDE
+.vscode/
+.idea/
+*.code-workspace
