@@ -62,11 +62,17 @@ Register an HTTP MCP endpoint in your host app:
 
 `http://<host>:19800/mcp`
 
+## Verified Runbook
+
+See `docs/verified.md` for the exact commands used to validate v0.2.0.
+
 **Docs (EN)**
 - `docs/installation.md`
 - `docs/compatibility.md`
+- `docs/verified.md`
 
 **Docs (JP)**
 - `README_jp.md`
 - `docs/installation_jp.md`
 - `docs/compatibility_jp.md`
+- `docs/verified_jp.md`

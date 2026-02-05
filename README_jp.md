@@ -62,11 +62,17 @@ MCPホストの設定は「HTTPエンドポイント」を指定する形にな�
 
 `http://<host>:19800/mcp`
 
+## 検証済み手順
+
+v0.2.0 の検証に使ったコマンドは `docs/verified_jp.md` にまとめています。
+
 **ドキュメント (EN)**
 - `README.md`
 - `docs/installation.md`
 - `docs/compatibility.md`
+- `docs/verified.md`
 
 **ドキュメント (JP)**
 - `docs/installation_jp.md`
 - `docs/compatibility_jp.md`
+- `docs/verified_jp.md`
